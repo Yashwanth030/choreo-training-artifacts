@@ -1,4 +1,5 @@
 import * as React from "react";
+import Cookies from "js-cookie"
 import Box from "@mui/material/Box";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -48,7 +49,8 @@ function UserMenu() {
         open={Boolean(anchorElUser)}
         onClose={handleCloseUserMenu}
       >
-        <MenuItem onClick={() => (window.location.pathname = "/reservations")}>
+        <MenuItem onClick={() => { sessionStorage.removeItem("userInfo");
+        window.location.href =`/auth/logout?session_hint=${Cookies.get('session_hint')}";` }}>
           <Button style={{ textTransform: "none" }}>
             <Typography textAlign="center">My Reservations</Typography>
           </Button>
